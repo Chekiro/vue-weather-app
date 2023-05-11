@@ -7,6 +7,7 @@ import { weatherApiInstance } from "./api";
 import { fetchBackgroundImage } from "./utils";
 import Loading from "./components/Loading.vue";
 import WeatherBox from "./components/WeatherBox.vue";
+import WeatherForecast from "./components/WeatherForecast.vue";
 import "./assets/style/style.scss";
 
 const loading = ref(true);
@@ -118,10 +119,10 @@ const fetchForecast = () => {
 
       threeHoursStream.value = mapList;
     })
-    .catch((error) => {
+    .catch((err) => {
       setTimeout(() => {
         error.value = true;
-      }, 2000);
+      }, 5000);
     });
 };
 
@@ -166,7 +167,12 @@ onMounted(() => {
         :bg="backgroundImg"
         @searchForCity="handleSearch"
       />
-      <!-- <LoadingVue v-if="loading" :error="error" /> -->
+      <WeatherForecast
+        :threeHoursStream="threeHoursStream"
+        :loading="loading"
+      />
+
+      <Loading v-if="loading" :error="error" />
     </div>
   </div>
 </template>

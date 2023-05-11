@@ -6,7 +6,6 @@ const query = ref("");
 
 const handleInput = () => {
   emit("searchForCity", query.value);
-  console.log("kliknalem");
   query.value = "";
 };
 </script>

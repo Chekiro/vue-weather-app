@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from "vue";
 import WeatherInput from "./WeatherInput.vue";
-import snow from "../assets/images/snow.jpg";
 
 const props = defineProps(["weatherData", "time", "loading", "bg"]);
 const emit = defineEmits(["searchForCity"]);
